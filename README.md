@@ -1,19 +1,28 @@
-# Saga Practice
+# Saga Practice/ GRAPHQL Practice
 
 This project is for the following redux saga practice
--Pulling future actions
--Non-blocking calls
--Running tasks in parallel
--Starting a race between multiple Effects
--Sequencing Sagas using yield\*
--Composing Sagas
--Task cancellation
--redux-saga's fork model
--Common Concurrency Patterns
--Examples of Testing Sagas
--Connecting Sagas to external Input/Output
--Using Channels
--Root Saga Patterns
+- Pulling future actions
+- Non-blocking calls
+- Running tasks in parallel
+- Starting a race between multiple Effects
+- Sequencing Sagas using yield\*
+- Composing Sagas
+- Task cancellation
+- redux-saga's fork model
+- Common Concurrency Patterns
+- Examples of Testing Sagas
+- Connecting Sagas to external Input/Output
+- Using Channels
+- Root Saga Patterns
+
+GraphQL
+- insert todo
+- update todo
+- delete todo
+- subscription
+- fragments 
+- optimistic mutation response 
+- read/write cache query
 
 **Project Name**: `Saga Practice`
 
@@ -25,7 +34,7 @@ This project is for the following redux saga practice
 
 ## Project Desctiption
 
-this is a unassigned task for learn and implement redux-saga
+this is a unassigned task for learn and implement redux-saga and graphql
 
 ## Prerequisites
 
@@ -101,6 +110,11 @@ List all dependencies from the package.json file along with their usage. This li
   - [native-base](https://nativebase.io/),[react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
 - **Libraries used for storage:**
   - [async-storage](https://github.com/react-native-community/async-storage)
+
+- **GRAPHQL**
+  - [apollo3-cache-persist](https://github.com/apollographql/apollo-cache-persist)
+  - [@apollo/client](https://www.npmjs.com/package/@apollo/client)
+  - [subscriptions-transport-ws](https://www.npmjs.com/package/subscriptions-transport-ws)
 
 ## Following accounts are used for the mentioned platform
 
