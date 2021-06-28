@@ -1,4 +1,4 @@
-import { useMutation, useSubscription } from '@apollo/client';
+import { useMutation, useQuery, useSubscription } from '@apollo/client';
 import { Button, Container, Icon } from 'native-base';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -6,6 +6,7 @@ import { FlatList, StatusBar, Text, View } from 'react-native';
 import reactotron from 'reactotron-react-native';
 import { Navigations } from '../../constants';
 import { DELETE_TODO, GET_SUBSCRIPTION, UPDATE_TODO } from '../../graphql/home/home';
+import { GET_LOGIN_STATUS } from '../../graphql/userTypeDefs';
 import { Colors } from '../../theme';
 import styles from './styles/HomeScreenStyle';
 
@@ -36,7 +37,7 @@ const RenderItems = ({ item, updateTodo, deleteTodo, updating, deleting }) => {
           style={is_completed ? styles.todoChecked : styles.todoUnChecked}
         />
       </Button>
-      <View style={styles.spacer}/>
+      <View style={styles.spacer} />
       <Button
         style={styles.buttonView}
         onPress={() => {
@@ -53,13 +54,16 @@ const RenderItems = ({ item, updateTodo, deleteTodo, updating, deleting }) => {
 
 const HomeScreen = ({ route, navigation }) => {
   /**
-   * @todo
+   * @info
    *
    * if you use subscription than the cache feature like readQuery, and writeQuery
-   * dont work
+   * don't work
    */
   const user = route?.params?.user;
   const { data = {}, loading, error } = useSubscription(GET_SUBSCRIPTION);
+  // user type defination
+  const { data: loginData } = useQuery(GET_LOGIN_STATUS);
+  reactotron.log(loginData?.isLogin, ' isLoginStatus');
   const [updateTodo, { loading: updating }] = useMutation(UPDATE_TODO);
   const [deleteTodo, { loading: deleting }] = useMutation(DELETE_TODO, {
     // update: deleteCache
@@ -80,7 +84,7 @@ const HomeScreen = ({ route, navigation }) => {
         data={todos}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
-        ListEmptyComponent={()=><Text>No todos for today</Text>}
+        ListEmptyComponent={() => <Text>No todos for today</Text>}
         contentContainerStyle={styles.content}
         renderItem={item => (
           <RenderItems

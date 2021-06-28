@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import Secrets from 'react-native-config';
 import { cache } from './cache';
+import { userTypeDefs } from './userTypeDefs';
 
 // GRAPHQL_ENDPOINT=https://api.graph.cool/simple/v1/ciyz901en4j590185wkmexyex
 // GRAPHQL_TODO=https://hasura.io/learn/graphql
@@ -71,7 +72,8 @@ const appLink = new ApolloLink.from([delay, wsLink]);
 const client = new ApolloClient({
   link: appLink,
   cache: cache,
-  connectToDevTools: true
+  connectToDevTools: true,
+  typeDefs: userTypeDefs
 });
 
 export { client };
